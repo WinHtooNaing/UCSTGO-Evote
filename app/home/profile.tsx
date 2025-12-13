@@ -102,6 +102,7 @@
 
 import Loading from "@/components/Loading";
 import ProfileList from "@/components/ProfileList";
+import { COLORS } from "@/data/color";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/lib/supabase";
 import { Ionicons } from "@expo/vector-icons";
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
   },
   logoutBtn: {
     flexDirection: "row",
-    backgroundColor: "#ff3b30",
+    backgroundColor: COLORS.seconary,
     paddingVertical: 14,
     marginHorizontal: 20,
     marginTop: 20,

@@ -5,9 +5,9 @@ import Carousel from "react-native-reanimated-carousel";
 const { width } = Dimensions.get("window");
 
 const images = [
-  require("@/assets/slide1.png"),
-  require("@/assets/slide2.png"),
-  require("@/assets/slide3.png"),
+  require("@/assets/slide1.jpg"),
+  require("@/assets/slide2.jpg"),
+  require("@/assets/slide3.jpg"),
 ];
 
 export default function ImageCarousel() {

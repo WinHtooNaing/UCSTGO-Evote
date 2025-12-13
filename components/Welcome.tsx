@@ -12,7 +12,7 @@ export default function WelcomeScreen() {
         autoPlay
         loop={false}
         style={{ width: 300, height: 300 }}
-        source={require("../assets/animation/vote.json")}
+        source={require("../assets/animation/welcome.json")}
       />
     </View>
   );

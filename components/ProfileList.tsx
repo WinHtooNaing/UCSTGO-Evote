@@ -125,6 +125,7 @@
 //   },
 // });
 
+import { COLORS } from "@/data/color";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -231,7 +232,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 12,
-    backgroundColor: "#007bff",
+    backgroundColor: COLORS.primary,
     alignItems: "center",
     justifyContent: "center",
     marginRight: 15,

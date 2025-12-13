@@ -1,3 +1,4 @@
+import { COLORS } from "@/data/color";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
@@ -14,7 +15,7 @@ const AnimatedTouchableOpacity =
 
 const { width } = Dimensions.get("window");
 
-const PRIMARY_COLOR = "#1976d2";
+const PRIMARY_COLOR = COLORS.primary;
 const SECONDARY_COLOR = "#fff";
 
 const CustomNavBar: React.FC<BottomTabBarProps> = ({

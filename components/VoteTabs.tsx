@@ -1,3 +1,4 @@
+import { COLORS } from "@/data/color";
 import React, { useState } from "react";
 import {
   ScrollView,
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
   },
 
   activeTab: {
-    backgroundColor: "#ff4d4d",
-    borderColor: "#ff4d4d",
+    backgroundColor: COLORS.primary,
+    borderColor: COLORS.primary,
   },
 
   text: {
