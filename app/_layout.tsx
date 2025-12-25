@@ -3,7 +3,6 @@ import React from "react";
 import FlashMessage from "react-native-flash-message";
 const Layout = () => {
   return (
-    // <AuthProvider>
     <>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -32,8 +31,6 @@ const Layout = () => {
         }}
       />
     </>
-
-    // </AuthProvider>
   );
 };
 

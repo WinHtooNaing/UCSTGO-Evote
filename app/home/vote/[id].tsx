@@ -306,33 +306,102 @@ export default function CandidateDetail() {
   // -------------------------------
   // HANDLE VOTE
   // -------------------------------
+  // const handleVote = async () => {
+  //   if (alreadyVotedCategory)
+  //     return Alert.alert("Error", `You already voted for ${category}`);
+
+  //   if (alreadyVotedCandidate)
+  //     return Alert.alert("Error", "You already voted this candidate");
+
+  //   setVoting(true);
+
+  //   try {
+  //     const { error } = await supabase.from("votes").insert({
+  //       student_id: student.id,
+  //       candidate_id: candidate.id,
+  //       category,
+  //     });
+
+  //     if (error) throw error;
+
+  //     Alert.alert("Success", "Vote submitted successfully!");
+  //     setAlreadyVotedCategory(true);
+  //   } catch {
+  //     Alert.alert("Error", "Something went wrong");
+  //   } finally {
+  //     setVoting(false);
+  //   }
+  // };
+  const confirmVote = () => {
+    Alert.alert(
+      "Confirm Vote",
+      `Are you sure you want to vote for ${candidate.name}?`,
+      [
+        {
+          text: "Cancel",
+          style: "cancel", // ❌ cancel
+        },
+        {
+          text: "OK",
+          style: "default",
+          onPress: handleVote, // ✅ continue voting
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
   const handleVote = async () => {
     if (alreadyVotedCategory)
-      return Alert.alert("Error", `You already voted for ${category}`);
+      return Alert.alert("Error", `You already voted for ${category}.`);
 
     if (alreadyVotedCandidate)
-      return Alert.alert("Error", "You already voted this candidate");
+      return Alert.alert("Error", "You already voted for this candidate");
 
     setVoting(true);
 
     try {
-      const { error } = await supabase.from("votes").insert({
+      // Insert into votes table
+      const { error: voteError } = await supabase.from("votes").insert({
         student_id: student.id,
         candidate_id: candidate.id,
         category,
       });
 
-      if (error) throw error;
+      if (voteError) throw voteError;
+
+      // -----------------------------
+      // UPDATE student table (your code)
+      // -----------------------------
+      const voteField =
+        category === "King"
+          ? "voted_king"
+          : category === "Queen"
+          ? "voted_queen"
+          : category === "Prince"
+          ? "voted_prince"
+          : category === "Princess"
+          ? "voted_princess"
+          : "voted_innocent";
+
+      const { error: studentError } = await supabase
+        .from("students")
+        .update({ [voteField]: true })
+        .eq("id", student.id);
+
+      if (studentError) throw studentError;
+
+      // Update UI state
+      setAlreadyVotedCategory(true);
 
       Alert.alert("Success", "Vote submitted successfully!");
-      setAlreadyVotedCategory(true);
-    } catch {
-      Alert.alert("Error", "Something went wrong");
+    } catch (err) {
+      console.log(err);
+      Alert.alert("Error", "Something went wrong.");
     } finally {
       setVoting(false);
     }
   };
-
   // -------------------------------
   // UI
   // -------------------------------
@@ -368,11 +437,13 @@ export default function CandidateDetail() {
             <TouchableOpacity
               style={[styles.voteBtn, disable && styles.disabledBtn]}
               disabled={disable}
-              onPress={handleVote}
+              onPress={confirmVote}
             >
               <Text style={styles.voteText}>
                 {alreadyVotedCategory
-                  ? "Already Voted ✅"
+                  ? `Already voted for ${category}`
+                  : alreadyVotedCandidate
+                  ? "Already voted for this candidate"
                   : voting
                   ? "Voting..."
                   : `Vote ${category}`}

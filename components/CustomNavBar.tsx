@@ -53,7 +53,13 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({
               onPress={onPress}
               style={[styles.tabItem, isFocused && styles.activeTabItem]}
             >
-              {getIcon(route.name, isFocused)}
+              {/* {getIcon(route.name, isFocused)} */}
+              {options.tabBarIcon?.({
+                focused: isFocused,
+                color: isFocused ? PRIMARY_COLOR : SECONDARY_COLOR,
+                size: 20,
+              })}
+
               {isFocused && (
                 <Animated.Text
                   entering={FadeIn.duration(150)}

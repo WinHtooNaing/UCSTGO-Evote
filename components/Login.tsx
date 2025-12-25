@@ -8,12 +8,14 @@ import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Image,
+  Linking,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+
 import { showMessage } from "react-native-flash-message";
 // export const COLORS = {
 //   primary: "#3c7a89",
@@ -160,7 +162,26 @@ export default function LoginScreen() {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.footer}>© UCSTGO Voting App 2025</Text>
+      <View style={styles.helpBox}>
+        <Text style={styles.helpTitle}>Any issue?</Text>
+        <Text style={styles.helpText}>Please contact admin</Text>
+
+        <TouchableOpacity
+          style={styles.contactRow}
+          onPress={() => Linking.openURL("tel:09-759518791")}
+        >
+          <Feather name="phone" size={14} color="#555" />
+          <Text style={styles.contactText}>09-759518791</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.contactRow}
+          onPress={() => Linking.openURL("mailto:winhtoonaing2003@gmail.com")}
+        >
+          <Feather name="mail" size={14} color="#555" />
+          <Text style={styles.contactText}>winhtoonaing2003@gmail.com</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -235,5 +256,35 @@ const styles = StyleSheet.create({
     marginTop: 35,
     fontSize: 12,
     color: "#777",
+  },
+  helpBox: {
+    position: "absolute",
+    bottom: 100,
+    alignItems: "center",
+  },
+
+  helpTitle: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: "#333",
+    marginBottom: 2,
+  },
+
+  helpText: {
+    fontSize: 12,
+    color: "#666",
+    marginBottom: 6,
+  },
+
+  contactRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 2,
+  },
+
+  contactText: {
+    fontSize: 12,
+    color: "#555",
+    marginLeft: 6,
   },
 });
