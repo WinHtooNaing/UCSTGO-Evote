@@ -1,9 +1,9 @@
+import Loading from "@/components/Loading";
 import VoteTabs from "@/components/VoteTabs";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
-  ActivityIndicator,
   FlatList,
   Image,
   StatusBar,
@@ -70,12 +70,12 @@ export default function Vote() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <VoteTabs onChange={setActiveTab} />
 
-      <View style={{ marginTop: 15, paddingHorizontal: 15 }}>
-        <Text style={styles.title}>{activeTab} Candidates</Text>
+      <View style={{ marginTop: 15, marginBottom: 5, paddingHorizontal: 15 }}>
+        <Text style={styles.title}>{activeTab}</Text>
       </View>
 
       {loading ? (
-        <ActivityIndicator size="large" style={{ marginTop: 40 }} />
+        <Loading />
       ) : (
         <FlatList
           data={candidates}

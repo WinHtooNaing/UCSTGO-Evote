@@ -1,5 +1,6 @@
+import { COLORS } from "@/data/color";
 import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import CustomImageCarousal from "./CustomImageCarousal";
 
 const ImageCarouselScreen = ({ images }) => {
@@ -15,7 +16,7 @@ const ImageCarouselScreen = ({ images }) => {
           data={data}
           autoPlay={false}
           pagination={true}
-          dotColor={"blue"}
+          dotColor={COLORS.primary}
         />
       </View>
     </View>
@@ -26,11 +27,12 @@ export default ImageCarouselScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: "white",
+    // flex: 1,
   },
 
   carouselContainer: {
-    height: 300, // ← IMPORTANT (fix carousel height)
+    height: 400, // ← IMPORTANT (fix carousel height)
   },
 });

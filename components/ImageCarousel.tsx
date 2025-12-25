@@ -1,3 +1,4 @@
+import { COLORS } from "@/data/color";
 import React, { useState } from "react";
 import { Dimensions, Image, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
@@ -57,7 +58,7 @@ export default function ImageCarousel() {
               width: currentIndex === i ? 24 : 8,
               height: 8,
               borderRadius: 4,
-              backgroundColor: currentIndex === i ? "#007bff" : "#b6c8ff",
+              backgroundColor: currentIndex === i ? COLORS.primary : "#b6c8ff",
               marginHorizontal: 4,
             }}
           />

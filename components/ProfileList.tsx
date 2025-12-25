@@ -154,31 +154,31 @@ const categories: CategoryItem[] = [
   {
     key: "king",
     title: "King",
-    description: "Vote your King candidate",
+    description: "Vote your King ",
     icon: "man-outline",
   },
   {
     key: "queen",
     title: "Queen",
-    description: "Vote your Queen candidate",
+    description: "Vote your Queen ",
     icon: "woman-outline",
   },
   {
     key: "prince",
     title: "Prince",
-    description: "Vote your Prince nominee",
+    description: "Vote your Prince ",
     icon: "body-outline",
   },
   {
     key: "princess",
     title: "Princess",
-    description: "Vote your Princess nominee",
+    description: "Vote your Princess ",
     icon: "rose-outline",
   },
   {
     key: "innocent",
     title: "Innocent",
-    description: "Vote the most Innocent student",
+    description: "Vote your Innocent ",
     icon: "sparkles-outline",
   },
 ];

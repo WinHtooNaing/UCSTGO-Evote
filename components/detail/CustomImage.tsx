@@ -1,3 +1,4 @@
+import { COLORS } from "@/data/color";
 import React, { useLayoutEffect, useState } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import Animated, {
@@ -59,11 +60,12 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderRadius: 20,
     overflow: "hidden",
-    borderColor: "#D4D4D4",
+    borderColor: COLORS.primary,
     borderWidth: 2,
+    height: 400,
   },
   image: {
     width: "100%",
-    height: undefined,
+    height: "100%",
   },
 });
