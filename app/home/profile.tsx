@@ -47,10 +47,8 @@ const Profile = () => {
   // if (!student) {
   //   return router.replace("/");
   // }
-  if (loading) return <Loading />;
-  if (!student) {
-    return router.replace("/");
-  }
+  if (loading || !student) return <Loading />;
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
